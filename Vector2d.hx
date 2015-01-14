@@ -17,9 +17,9 @@ class Vector2d {
 	var normalized : Vector2d;
 	var normalizedUpdated : Bool = false;
 	
-	public function new() {
-		x = 0;
-		y = 0;
+	public function new(x:Float, y:Float) {
+		this.x = x;
+		this.y = y;
 	}
 	
 	public function getX() : Float {
@@ -42,11 +42,6 @@ class Vector2d {
 			this.y = y;
 			coordUpdated();
 		}
-	}
-	
-	public function new(x:Float, y:Float) {
-		this.x = x;
-		this.y = y;
 	}
 	
 	public function length() : Float {
