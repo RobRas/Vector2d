@@ -1,3 +1,12 @@
+class Test {
+	static public function main() {
+		var vect2d = new Vector2d(10, 15);
+		trace('Vector2d: ' + vect2d.toString());
+		trace('Length: ' + vect2d.length());
+		trace('Normalized: ' + vect2d.normalize().toString());
+	}
+}
+
 class Vector2d {
 	var x : Float;
 	var y : Float;
@@ -7,13 +16,6 @@ class Vector2d {
 	
 	var _normalized : Vector2d;
 	var normalizedUpdated : Bool = true;
-	
-	static public function main() {
-		var vect2d = new Vector2d(10, 15);
-		trace('Vector2d: ' + vect2d.toString());
-		trace('Length: ' + vect2d.length());
-		trace('Normalized: ' + vect2d.normalize().toString());
-	}
 	
 	public function new(x:Float, y:Float) {
 		this.x = x;
