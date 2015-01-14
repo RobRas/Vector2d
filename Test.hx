@@ -65,6 +65,10 @@ class Vector2d {
 		return _normalized;
 	}
 	
+	static public function distance(v1 : Vector2d, v2 : Vector2d) : Float {
+		return Math.abs(v1.getX() - v2.getX()) + Math.abs(v1.getY() - v2.getY());
+	}
+	
 	public function toString() {
 		return 'x=$x, y=$y';
 	}
