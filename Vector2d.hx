@@ -1,21 +1,19 @@
-class Test {
-	static public function main() {
-		var vect2d = new Vector2d(10, 15);
-		trace('Vector2d: ' + vect2d.toString());
-		trace('Length: ' + vect2d.length);
-		trace('Normalized: ' + vect2d.normalize().toString());
-	}
-}
-
 class Vector2d {
 	var x : Float;
 	var y : Float;
 	
-	var length : Float;
-	var lengthUpdated : Bool = false;
+	var _length : Float;
+	var lengthUpdated : Bool = true;
 	
-	var normalized : Vector2d;
-	var normalizedUpdated : Bool = false;
+	var _normalized : Vector2d;
+	var normalizedUpdated : Bool = true;
+	
+	static public function main() {
+		var vect2d = new Vector2d(10, 15);
+		trace('Vector2d: ' + vect2d.toString());
+		trace('Length: ' + vect2d.length());
+		trace('Normalized: ' + vect2d.normalize().toString());
+	}
 	
 	public function new(x:Float, y:Float) {
 		this.x = x;
@@ -46,23 +44,23 @@ class Vector2d {
 	
 	public function length() : Float {
 		if (lengthUpdated) {
-			length = Math.sqrt(x * x + y * y);
+			_length = Math.sqrt(x * x + y * y);
 			lengthUpdated = false;
 		}
 		
-		return length;
+		return _length;
 	}
 	
-	public function normalize() : Void {
+	public function normalize() : Vector2d {
 		if (normalizedUpdated) {
-			var norm = new Vector2d();
+			var norm = new Vector2d(0, 0);
 			var len = length();
 			norm.x = x / len;
 			norm.y = y / len;
-			normalized = norm;
+			_normalized = norm;
 		}
 		
-		return normalized;
+		return _normalized;
 	}
 	
 	public function toString() {
