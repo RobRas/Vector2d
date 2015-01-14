@@ -30,14 +30,14 @@ class Vector2d {
 		return y;
 	}
 	
-	public function  setX(x:Float) : Void {
+	public function  setX(float x) : Void {
 		if (this.x != x) {
 			this.x = x;
 			coordUpdated();
 		}
 	}
 	
-	public function  setY(y:Float) : Void {
+	public function  setY(float y) : Void {
 		if (this.y != y) {
 			this.y = y;
 			coordUpdated();
