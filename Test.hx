@@ -1,14 +1,17 @@
 class Test {
 	public static function main() {
 		var vect2d = new Vector2d(10, 15);
-		trace('Vector2d: ' + vect2d.toString());
-		trace('Length: ' + vect2d.length());
+		trace('vect2d: ' + vect2d.toString());
+		trace('Magnitude: ' + vect2d.magnitude());
 		trace('Normalized: ' + vect2d.normalize().toString());
 		
 		var vect2d2 = new Vector2d(1, 1);
+		trace('vect2d2: ' + vect2d.toString());
+		
+		trace('Distance: ' + Vector2d.distance(vect2d, vect2d2));
 		
 		var Vect2d3 = Vector2d.add(vect2d, vect2d2);
-		trace(Vect2d3.toString());
+		trace('Added together: ' + Vect2d3.toString());
 	}
 }
 
@@ -16,8 +19,8 @@ class Vector2d {
 	var x : Float;
 	var y : Float;
 	
-	var _length : Float;
-	var lengthUpdated : Bool = true;
+	var _magnitude : Float;
+	var magnitudeUpdated : Bool = true;
 	
 	var _normalized : Vector2d;
 	var normalizedUpdated : Bool = true;
@@ -49,21 +52,21 @@ class Vector2d {
 		}
 	}
 	
-	public function length() : Float {
-		if (lengthUpdated) {
-			_length = Math.sqrt(x * x + y * y);
-			lengthUpdated = false;
+	public function magnitude() : Float {
+		if (magnitudeUpdated) {
+			_magnitude = Math.sqrt(x * x + y * y);
+			magnitudeUpdated = false;
 		}
 		
-		return _length;
+		return _magnitude;
 	}
 	
 	public function normalize() : Vector2d {
 		if (normalizedUpdated) {
 			var norm = new Vector2d(0, 0);
-			var len = length();
-			norm.x = x / len;
-			norm.y = y / len;
+			var mag = magnitude();
+			norm.x = x / mag;
+			norm.y = y / mag;
 			_normalized = norm;
 		}
 		
@@ -88,7 +91,7 @@ class Vector2d {
 	
 	
 	function coordUpdated() {
-		lengthUpdated = true;
+		magnitudeUpdated = true;
 		normalizedUpdated = true;
 	}
 }
