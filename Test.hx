@@ -1,9 +1,14 @@
 class Test {
-	static public function main() {
+	public static function main() {
 		var vect2d = new Vector2d(10, 15);
 		trace('Vector2d: ' + vect2d.toString());
 		trace('Length: ' + vect2d.length());
 		trace('Normalized: ' + vect2d.normalize().toString());
+		
+		var vect2d2 = new Vector2d(1, 1);
+		
+		var Vect2d3 = Vector2d.add(vect2d, vect2d2);
+		trace(Vect2d3.toString());
 	}
 }
 
@@ -65,13 +70,22 @@ class Vector2d {
 		return _normalized;
 	}
 	
-	static public function distance(v1 : Vector2d, v2 : Vector2d) : Float {
+	public static function add(lhs:Vector2d, rhs:Vector2d) : Vector2d {
+		return new Vector2d(lhs.getX() + rhs.getX(), lhs.getY() + rhs.getY());
+	}
+	
+	public static function subtract(lhs:Vector2d, rhs:Vector2d) : Vector2d {
+		return new Vector2d(lhs.getX() - rhs.getX(), lhs.getY() - rhs.getY());
+	}
+	
+	public static function distance(v1 : Vector2d, v2 : Vector2d) : Float {
 		return Math.abs(v1.getX() - v2.getX()) + Math.abs(v1.getY() - v2.getY());
 	}
 	
 	public function toString() {
 		return 'x=$x, y=$y';
 	}
+	
 	
 	function coordUpdated() {
 		lengthUpdated = true;
