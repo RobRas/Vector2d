@@ -68,6 +68,7 @@ class Vector2d {
 			norm.x = x / mag;
 			norm.y = y / mag;
 			_normalized = norm;
+			normalizedUpdated = false;
 		}
 		
 		return _normalized;
